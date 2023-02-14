@@ -18,40 +18,12 @@
             width: 100%;
         }
 
-         #delete, #export, #export2  {
-
-		            position: absolute;
-		            bottom:80px;
-		            right:25px;
-		            z-index:900;
-		            background:orangered;
-		            color:yellow;
-		            padding:7px;
-		            border-radius:10px;
-		            font-family: 'Helvetica Neue';
-		            cursor: pointer;
-		            font-size:20px;
-		            text-decoration:none;
-		        }
-		        #export {
-		            bottom:120px;
-
-        }
-                 #export2 {
-                     bottom:160px;
-
-        }
-
-
+        
 
     </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" />
-
-<link rel="stylesheet" href="Leaflet.PolylineMeasure.css" />
-<script src="Leaflet.PolylineMeasure.js"></script>
-
 
  <!--Add draw plugin -->
     <link rel='stylesheet' href='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.css' />
@@ -69,11 +41,7 @@
 
 <div id="map"></div>
 
-    <div id='delete'>feature rm</div>
-    <a href='#' id='export'>ignition fx</a>
-    <a href='#' id='export2'>landfire fx</a>
-
-<script>
+  <script>
 
 
 let mapbox = L.tileLayer('https://api.mapbox.com/styles/v1/zmcalert/cld0g4r7s000914n7vhatmacs/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoiem1jYWxlcnQiLCJhIjoiY2xjemJrY3BoMHJwYjN1b2RneXNzYjg4YiJ9._Wq8Oj7aQYYIfSc2YaHpRg', {
@@ -99,10 +67,6 @@ let wfas_0 = L.tileLayer.wms('https://www.wfas.net/cgi-bin/mapserv?map=/var/www/
 
 // End WFAS
 
-// BEGIN firedanger.cr.usgs.gov
-// Add WMS layer for Operational Fire Danger Forecast Products: 1_conus_day, 2_conus_day, 3_conus_day
-
-
 let wfpi_1 = L.tileLayer.wms('https://dmsdata.cr.usgs.gov/geoserver/firedanger_emodis-wfpi-forecast-1_conus_day_data/ows?SERVICE=WMS', {
         layers: 'emodis-wfpi-forecast-1_conus_day_data',
         format: "image/png",
@@ -110,9 +74,6 @@ let wfpi_1 = L.tileLayer.wms('https://dmsdata.cr.usgs.gov/geoserver/firedanger_e
 		opacity:"0.60"
 });
 
-// END firedanger.cr.usgs.gov
-
-// Start Landfire Fuels -  FBFM40
 
 let lf_f40 = L.tileLayer.wms('https://edcintl.cr.usgs.gov/geoserver/landfire/us_220/ows?service=WMS', {
         layers: 'LC22_F40_220',
@@ -121,7 +82,6 @@ let lf_f40 = L.tileLayer.wms('https://edcintl.cr.usgs.gov/geoserver/landfire/us_
 		opacity:"0.60"
 });
 
-// END Landfire
 
 
 // Begin BASE MAPS
@@ -140,11 +100,6 @@ var overlayMaps = {
    
 };
 
-// Begin VAR MAPS
-
-// Begin CONTROLS
-// Lebanon Kansas Center 39.8097° N, 98.5556° W
-
 var map = L.map('map', {
 
 center: [39.8097, -98.5556] ,
@@ -152,9 +107,6 @@ zoom: 5,
 
 layers: [mapbox);
 
-// END VAR MAPS
-
-L.control.mousePosition().addTo(map);
 
 L.control.layers(baseMaps, overlayMaps).addTo(map);
 
