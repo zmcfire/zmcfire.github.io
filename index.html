@@ -25,10 +25,6 @@
 <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" />
 
- <!--Add draw plugin -->
-    <link rel='stylesheet' href='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.css' />
-    <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.js'></script>
-
 <!--Add mapbox building street layer -->
 
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css" rel="stylesheet">
@@ -49,13 +45,6 @@ let mapbox = L.tileLayer('https://api.mapbox.com/styles/v1/zmcalert/cld0g4r7s000
     attribution: '&copy; <a href="http://mapbox.com">MapBox</a>'
 });
 
-
-//End Map Box
-
-
-// Wildland Fire Assessment System WFAS
-// Add WMS layer for Severe Fire Weather Potential Index layer: fbxday0,fbxday1,fbxday2
-
 let wfas_0 = L.tileLayer.wms('https://www.wfas.net/cgi-bin/mapserv?map=/var/www/html/nfdr/mapfiles/wfas_wms_new.map', {
         layers: 'fbxday0',
         format:"image/png",
@@ -64,8 +53,6 @@ let wfas_0 = L.tileLayer.wms('https://www.wfas.net/cgi-bin/mapserv?map=/var/www/
 
 });
 
-
-// End WFAS
 
 let wfpi_1 = L.tileLayer.wms('https://dmsdata.cr.usgs.gov/geoserver/firedanger_emodis-wfpi-forecast-1_conus_day_data/ows?SERVICE=WMS', {
         layers: 'emodis-wfpi-forecast-1_conus_day_data',
@@ -82,9 +69,6 @@ let lf_f40 = L.tileLayer.wms('https://edcintl.cr.usgs.gov/geoserver/landfire/us_
 		opacity:"0.60"
 });
 
-
-
-// Begin BASE MAPS
 
 var baseMaps = {
    "Mapbox": mapbox,
